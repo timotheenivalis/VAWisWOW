@@ -57,8 +57,8 @@
 
 %%%%% ---------- the background picture ---------- %%%%%
 %% to change it modify the macro \BackgroundPicture
-\ClearShipoutPicture
-\AddToShipoutPicture{\BackgroundPicture}
+%\ClearShipoutPicture
+%\AddToShipoutPicture{\BackgroundPicture}
 
 \noindent % to have the picture right in the center
 
@@ -82,9 +82,9 @@
 
 \coordinate (aaa) at (currenty);
 
-	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} Additive genetic variation in fitness measures evolution across all traits and all the genome}
-		{
-		Yet, 
+	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} We do not know how much wild organisms are currently evolving!}
+		{Fisher's fundamental theorem of natural selection says that \textbf{additive genetic variation in fitness measures evolution across all traits and all the genome}. That is just what we need{\color{colorone}{\**}}!
+		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. We assemble data from the monitoring of a dozen pedigreed populations, 
 		}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -170,12 +170,14 @@
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
-   \Endblock{($(web.east)+(2,-4)$)}{57}{\hspace{25cm}\color{colorone}{Co-authors:}}{ 
+   \Endblock{($(web.east)+(2,-4)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
    Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
 C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
 Marcel E. Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
-Jane Reid, Matthew Wolack, Andrew Cockburn
+Jane Reid, Matthew Wolack, Andrew Cockburn \\
+
+{\color{colorone}{\**} Fisher's theorem relies on stringent assumptions, or alternatively on quite a specific meaning of evolution: }
   }
 	
 \end{tikzpicture}
-\end{document}
+  \end{document}
