@@ -1,0 +1,181 @@
+% fancytikzposter.tex, version 2.1
+% Original template created by Elena Botoeva [botoeva@inf.unibz.it], June 2012
+% 
+% This file is distributed under the Creative Commons Attribution-NonCommercial 2.0
+% Generic (CC BY-NC 2.0) license
+% http://creativecommons.org/licenses/by-nc/2.0/ 
+\documentclass{a0poster}
+\usepackage[USenglish]{babel}% or british
+\usepackage[T1]{fontenc}
+
+
+\usepackage{wrapfig}
+\usepackage{fancytikzposterM} 
+\usepackage{multirow}
+\usepackage{array}
+
+% background picture
+\usebackgroundtemplate{7}
+
+\definecolor{myblue3}{HTML}{0C3E07}%main frames
+
+
+\usepackage[margin=\margin cm, paperwidth=84.1cm, paperheight=118.9cm]{geometry}
+
+
+\usepackage{cmbright}
+%\usepackage[default]{cantarell}
+%\usepackage{avant}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SET FONT SIZES %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\Huge}{\fontsize{64}{85}\selectfont} % Main title
+\renewcommand{\huge}{\fontsize{44}{70}\selectfont} % Sub title
+\renewcommand{\LARGE}{\fontsize{48}{48}\selectfont} % Box headers
+\renewcommand{\Large}{\fontsize{42}{40}\selectfont} % Authors
+\renewcommand{\normalsize}{\fontsize{40}{42}\selectfont} % Text in the boxes
+\renewcommand{\footnotesize}{\fontsize{34}{42}\selectfont} % references
+\renewcommand{\small}{\fontsize{24}{22}\selectfont}
+%% add your packages here
+
+
+%% Set the folder that contains the images
+\graphicspath{ {./Lowres/} }
+
+
+\title{How much are wild vertebrate populations evolving right now?\vspace{-0.2em}}
+\author{{\LARGE{Timoth\'{e}e Bonnet} \& Loeske Kruuk}\\ \vspace{-20pt} \footnotesize Australian National University
+\\
+}
+
+\begin{document}
+
+%%%%% ---------- the background picture ---------- %%%%%
+%% to change it modify the macro \BackgroundPicture
+\ClearShipoutPicture
+\AddToShipoutPicture{\BackgroundPicture}
+
+\noindent % to have the picture right in the center
+
+\begin{tikzpicture}
+  \initializesizeandshifts
+  % \setxshift{15}
+  \setyshift{2.5} % uncomment this line to condense the boxes
+
+  \newcommand{\volesize}{0.8cm}
+
+  %% the title block, #1 - shift, the default value is (0,0), #2 - width, #3 - scale
+  %% the alias of the title block is `title', so we can refer to its boundaries later
+  \ifthenelse{\equal{\template}{1}}{ 
+    \titleblock[(-0.7,0)]{48}{1}
+			}{
+    \titleblock[(-10,0)]{87}{1.5}
+			}
+			
+\addlogo[east]{(10,0)}{8cm}{anu}
+\addlogo[west]{(-10,0)}{8cm}{tim}
+
+\coordinate (aaa) at (currenty);
+
+	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} Additive genetic variation in fitness measures evolution across all traits and all the genome}
+		{
+		Yet, 
+		}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\blocknodew[($(currenty)+(0,2)$)]{77}{\textsc{Theory:} How to estimate additive genetic variance in relative fitness ($V_A(\omega)$) }
+	{
+	\hspace{-1cm}
+		\begin{tabular}{p{0.30\textwidth} p{0.03\textwidth} p{0.30\textwidth} p{0.03\textwidth} p{0.30\textwidth}}
+		
+		\parbox{25cm}{model fitness?\\
+		  \centering  \begin{tabular}{c c}
+
+		    \end{tabular}
+		  }
+		&
+		  ZI distribution
+		&
+		\parbox{25cm}{ \hspace{4cm}estimate genetic variation?\\
+		   \centering \begin{tabular}{c} \end{tabular}
+		  }
+		&
+		  
+		&
+		\parbox{25cm}{Convert estimates to $V_A(\omega)$\\
+		\centering \begin{tabular}{c}  \end{tabular}
+		  }	
+		\end{tabular}
+		\vspace{-1cm}
+	}%end block
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\coordinate (tfirstcol) at (currenty);
+	
+ \coordinate (width) at ($(76.8,0) - (2.1,0)$);   
+ %% the content of the block
+          \draw let \p1=($(width)-(0,0)$) , \p2=($(0,\blocktitleheight cm)-(0,2.4cm)$)
+          in node[draw, anchor=north, color=blocktitlefillcolor, text=blocktextcolor, 
+          frame, rectanglesplittwo, rectangle split horizontal=false, 
+          rectangle split part fill={blocktitlefillcolor, none}, %
+          rectangle split empty part height= \y2 
+          ]
+          (box) at ($(currenty)+(0,2)$) {
+            \nodepart{second}
+            \begin{minipage}{\x1}
+            \begin{center}
+	      \vspace{22cm} % a very mesy trick to control box height...
+            \end{center}
+           \end{minipage}
+          }; 
+
+          %% the title of the block
+          \node[frame, anchor=north west, text=blocktitletextcolor] at (box.north west)
+          {\bf\LARGE Understanding genetic adaptation to climatic changes: lessons from two examples};
+          
+   \coordinate (currenty) at ($(box.south)-(yshift)$);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          \draw let \p1=($(width)-(0,0)$) , \p2=($(0,\blocktitleheight cm)-(0,2.4cm)$)
+          in node[draw, anchor=north, color=blocktitlefillcolor, text=blocktextcolor, 
+          frame, rectanglesplittwo, rectangle split horizontal=false, 
+          rectangle split part fill={blocktitlefillcolor, none}, %
+          rectangle split empty part height= \y2 
+          ]
+          (box2) at ($(currenty)+(0,2)$) {
+            \nodepart{second}
+            \begin{minipage}{\x1}
+            \begin{center}
+	      \vspace{22cm} % a very mesy trick to control box height...
+            \end{center}
+           \end{minipage}
+          }; 
+          
+                    %% the title of the block
+          \node[frame, anchor=north west, text=blocktitletextcolor] (tit2) at (box2.north west)
+          {\bf\LARGE Understanding the interplay between genetic evolution and population dynamics}; 
+
+          
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \coordinate (currenty) at ($(box2.south)-(yshift)$);
+
+    \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrw) at ($(currenty) + (-34,0)$) {\includegraphics[width=8cm]{qrwebsite}};
+    \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrgit) at ($(currenty) + (34,0)$) {\includegraphics[width=8cm]{QRvawiswow}};
+    \node[anchor=south] (web) at (qrw.north) {\textbf{\color{colorone!80!black}{Website}}};
+    \node[anchor=south] (git) at (qrgit.north) {\textbf{\color{colorone!80!black}{R and \LaTeX code}}};
+		
+
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+   \Endblock{($(web.east)+(2,-4)$)}{57}{\hspace{25cm}\color{colorone}{Co-authors:}}{ 
+   Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
+C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
+Marcel E. Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
+Jane Reid, Matthew Wolack, Andrew Cockburn
+  }
+	
+\end{tikzpicture}
+\end{document}
