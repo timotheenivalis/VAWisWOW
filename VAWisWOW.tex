@@ -83,7 +83,7 @@
 \coordinate (aaa) at (currenty);
 
 	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} We do not know how much wild organisms are currently evolving!}
-		{Fisher's fundamental theorem of natural selection says that \textbf{additive genetic variation in fitness measures evolution across all traits and all the genome}. That is just what we need{\color{colorone}{\**}}!
+		{Fisher's fundamental theorem of natural selection states that \textbf{additive genetic variation in fitness measures evolution across all traits and all the genome}. That is just what we need{\color{colorone}{\**}}!
 		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. We assemble data from the monitoring of a dozen pedigreed populations, 
 		}
 	
@@ -135,32 +135,14 @@
 
           %% the title of the block
           \node[frame, anchor=north west, text=blocktitletextcolor] at (box.north west)
-          {\bf\LARGE Understanding genetic adaptation to climatic changes: lessons from two examples};
+          {\bf\LARGE \textsc{Emperical results:} };
           
    \coordinate (currenty) at ($(box.south)-(yshift)$);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-          \draw let \p1=($(width)-(0,0)$) , \p2=($(0,\blocktitleheight cm)-(0,2.4cm)$)
-          in node[draw, anchor=north, color=blocktitlefillcolor, text=blocktextcolor, 
-          frame, rectanglesplittwo, rectangle split horizontal=false, 
-          rectangle split part fill={blocktitlefillcolor, none}, %
-          rectangle split empty part height= \y2 
-          ]
-          (box2) at ($(currenty)+(0,2)$) {
-            \nodepart{second}
-            \begin{minipage}{\x1}
-            \begin{center}
-	      \vspace{22cm} % a very mesy trick to control box height...
-            \end{center}
-           \end{minipage}
-          }; 
-          
-                    %% the title of the block
-          \node[frame, anchor=north west, text=blocktitletextcolor] (tit2) at (box2.north west)
-          {\bf\LARGE Understanding the interplay between genetic evolution and population dynamics}; 
 
           
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   \coordinate (currenty) at ($(box2.south)-(yshift)$);
+   \coordinate (currenty) at ($(box.south)-(yshift)$);
 
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrw) at ($(currenty) + (-34,0)$) {\includegraphics[width=8cm]{qrwebsite}};
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrgit) at ($(currenty) + (34,0)$) {\includegraphics[width=8cm]{QRvawiswow}};
