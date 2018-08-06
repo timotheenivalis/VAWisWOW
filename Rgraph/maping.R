@@ -30,11 +30,13 @@ coord <- data.frame(lon=c(149.1300092, #Canberra
                   46.811081,#chur
                   43.650036,#montpellier
                   57.46841))#gotland
+pdf(file = "map.pdf", width = 9.6, height = 6.5)
 
 map("world", fill=TRUE, col=rgb(20,150,20, maxColorValue = 255), bg=rgb(1,1,1, maxColorValue = 1), ylim=c(-90, 90), mar=c(0,0,0,0))
 
 points(coord$lon,coord$lat, col=rgb(150, 20, 150, 255, maxColorValue = 255), pch=16, cex=1)
 points(coord$lon,coord$lat, col=rgb(150, 20, 150, 220, maxColorValue = 255), pch=1, cex=2)
 points(coord$lon,coord$lat, col=rgb(150, 20, 150, 220, maxColorValue = 255), pch=1, cex=3)
-
+points(coord$lon,coord$lat, col=rgb(75, 10, 75, 255, maxColorValue = 255), pch=16, cex=0.5)
+dev.off()
 
