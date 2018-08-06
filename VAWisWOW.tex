@@ -78,7 +78,7 @@
     \titleblock[(-10,0)]{87}{1.5}
 			}
 			
-\addlogo[east]{(10,0)}{8cm}{anu}
+\addlogo[east]{(10,0)}{8cm}{loeske}
 \addlogo[west]{(-10,0)}{8cm}{tim}
 
 \coordinate (aaa) at (currenty);
@@ -90,34 +90,41 @@
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\blocknodew[($(currenty)+(0,2)$)]{77}{\textsc{Theory:} How to estimate additive genetic variance in relative fitness ($V_A(\omega)$) ?}
-	{
+	{	
 	\hspace{-1cm}
 		\begin{tabular}{p{0.30\textwidth} p{0.029\textwidth} p{0.30\textwidth} p{0.029\textwidth} p{0.30\textwidth}}
 		
-		\parbox{24.5cm}{\textsc{How to model fitness?}\\
+		\parbox{24cm}{ \hspace{2cm} {\textsc{How to model fitness?}\\
+		
 		  \centering  \begin{tabular}{c c}
 		    \includegraphics[width=20cm]{Rgraph/figure/zidist-1.pdf}
 		    \end{tabular}
-		    \footnotesize Zero-Inflated Over-Dispersed Poisson models tend to fit well lifetime fitness data. 
+		    
+		    }
+		     \footnotesize Zero-Inflated Over-Dispersed Poisson models tend to fit well lifetime fitness data. Quantitative genetic estimates may be more precise than with Gaussian or Poisson models.
 		  }
 		&
 
 		&
-		\parbox{24.5cm}{ \hspace{2cm} \textsc{How to estimate genetic variation?}\\
+		\parbox{24cm}{ \hspace{1cm} \textsc{How to estimate genetic variation?}\\
+		
 		   {\centering \begin{tabular}{c} 
-		   \end{tabular}}
+		   \includegraphics[width=20cm]{Rgraph/figure/latentGmat-1.pdf}
+		   \end{tabular}
 		   
-		   \footnotesize Quantitative genetic \textit{animal models} from relatedness matrix. Estimate G-matrix for the zero-inflation and the over-dispersed Poisson.
+		   }
+		   \footnotesize Quantitative genetic \textit{\textsc{animal models}} from relatedness matrix. Estimate G-matrix for the zero-inflation and the over-dispersed Poisson. BLALLALA
 		  }
 		&
 		  
 		&
-		\parbox{24.5cm}{\textsc{How to convert estimates to $V_A(\omega)$}\\
+		\parbox{24cm}{\textsc{How to convert estimates to $V_A(\omega)$}\\
+		
 		{\centering \begin{tabular}{c}
 		  \includegraphics[width=20cm]{Rgraph/VaPopGrowth.pdf}
 		\end{tabular}} 
 				
-		\footnotesize Monte-Carlo integration of multivariate latent breeding values to the scale of fitness. Back-transformation matches theoretical expectation: with simulations $V_A(\omega)$ equals the increase in population growth rate.
+		\footnotesize Monte-Carlo integration of latent breeding values to the scale of data. Back-transformation works: with simulations $V_A(\omega)$ equals the increase in population growth rate.
 	      }
 		\end{tabular}
 		\vspace{-1cm}
@@ -146,20 +153,19 @@
           \node[frame, anchor=north west, text=blocktitletextcolor] at (box.north west)
           {\bf\LARGE \textsc{Emperical results:} };
           
-          \node[anchor=north] (map) at ($(box.north)+(0,-3)$) {\includegraphics[width=20cm]{Rgraph/map.pdf}};
+          \node[anchor=north] (map) at ($(box.north)+(0,-3)$) {\includegraphics[width=20cm, trim=0cm 2.5cm 0cm 2.5cm, clip]{Rgraph/map.pdf}};
 
           \node[anchor=south west] (zih2) at (box.south west) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
-          \node[anchor=north] (zih2com) at (zih2.south) {Heritabilities are small on the scale of the data\dots};
+          %\node[anchor=north] (zih2com) at (zih2.south) {Heritabilities are small on the scale of the data\dots};
           
           \node[anchor=south east] (ziva) at (box.south east) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
-	  \node[anchor=north] (zivacom) at (ziva.south) {\dots but that is irrelevant to the rate of evolution.};
+	  %\node[anchor=north] (zivacom) at (ziva.south) {\dots but that is irrelevant to the rate of evolution.};
                     
    \coordinate (currenty) at ($(box.south)-(yshift)$);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
           
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   \coordinate (currenty) at ($(box.south)-(yshift)$);
 
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrw) at ($(currenty) + (-34,0)$) {\includegraphics[width=8cm]{qrwebsite}};
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrgit) at ($(currenty) + (34,0)$) {\includegraphics[width=8cm]{QRvawiswow}};
@@ -170,13 +176,13 @@
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
-   \Endblock{($(web.east)+(2,-4)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
+   \Endblock{($(web.east)+(2,-4.5)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
    Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
 C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
 Marcel Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
 Jane Reid, Matthew Wolack \& Andrew Cockburn \\
 
-{\color{colorone}{\**} Fisher's theorem relies on stringent assumptions, or alternatively on quite a specific meaning of evolution:  XXXXXXXXXXXXXX XXX XXXXXXXXXXXXX. In the absence of competition and gene-by-environment interactions, $V_A(\omega)$ is also the increase in expected population growth rate. Such a clean net between evolution and demography probably never exist in nature, or not for long anyways.}
+{\color{colorone}{\**} Fisher's theorem relies on stringent assumptions, or alternatively on a specific meaning of evolution. In the absence of competition and gene-by-environment interactions, $V_A(\omega)$ is the increase in expected population growth rate. This clean link between evolution and demography probably doesn't apply (for long) in nature.}
   }
 	
 \end{tikzpicture}

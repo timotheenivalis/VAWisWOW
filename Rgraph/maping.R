@@ -15,6 +15,8 @@ coord <- data.frame(lon=c(149.1300092, #Canberra
                  -115.870925, #ram
                  -8.578,#soay
                  -6.210810,#rum
+                 9.567247,#chur 
+                  3.807534, #montpellier
                  18.486745),#gotland
            lat= c(-35.28094,#canberra
                   48.633132,#Mandarte
@@ -25,11 +27,14 @@ coord <- data.frame(lon=c(149.1300092, #Canberra
                   52.380327,#ram
                   57.81,#soay
                   56.982293,#rum
+                  46.811081,#chur
+                  43.650036,#montpellier
                   57.46841))#gotland
 
-map("world", fill=TRUE, col=rgb(51,102,0, maxColorValue = 255), bg=rgb(0,0,0, maxColorValue = 255), ylim=c(-90, 90), mar=c(0,0,0,0))
-points(coord$lon,coord$lat, col=rgb(200, 10, 0, maxColorValue = 255), pch=16, cex=1)
-points(coord$lon,coord$lat, col=rgb(200, 10, 0, maxColorValue = 255), pch=1, cex=2)
-points(coord$lon,coord$lat, col=rgb(200, 10, 0, maxColorValue = 255), pch=1, cex=3)
+map("world", fill=TRUE, col=rgb(20,150,20, maxColorValue = 255), bg=rgb(1,1,1, maxColorValue = 1), ylim=c(-90, 90), mar=c(0,0,0,0))
+
+points(coord$lon,coord$lat, col=rgb(150, 20, 150, 255, maxColorValue = 255), pch=16, cex=1)
+points(coord$lon,coord$lat, col=rgb(150, 20, 150, 220, maxColorValue = 255), pch=1, cex=2)
+points(coord$lon,coord$lat, col=rgb(150, 20, 150, 220, maxColorValue = 255), pch=1, cex=3)
 
 
