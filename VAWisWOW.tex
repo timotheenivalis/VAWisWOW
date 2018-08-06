@@ -41,6 +41,7 @@
 \renewcommand{\normalsize}{\fontsize{40}{42}\selectfont} % Text in the boxes
 \renewcommand{\footnotesize}{\fontsize{34}{42}\selectfont} % references
 \renewcommand{\small}{\fontsize{24}{22}\selectfont}
+\newcommand{\smallest}{\fontsize{18}{16}\selectfont}
 %% add your packages here
 
 
@@ -108,7 +109,10 @@
 		  
 		&
 		\parbox{25cm}{Convert estimates to $V_A(\omega)$\\
-		\centering \begin{tabular}{c}  \end{tabular}
+		FORMULA
+		\centering \begin{tabular}{c} 
+		  \includegraphics[width=20cm]{Rgraph/VaPopGrowth.pdf}
+		\end{tabular}
 		  }	
 		\end{tabular}
 		\vspace{-1cm}
@@ -137,6 +141,12 @@
           \node[frame, anchor=north west, text=blocktitletextcolor] at (box.north west)
           {\bf\LARGE \textsc{Emperical results:} };
           
+          \node[anchor=north] (map) at ($(box.north)+(0,-3)$) {\includegraphics[width=20cm]{Rgraph/map.pdf}};
+
+          \node[anchor=south west] (zih2) at (box.south west) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
+          \node[anchor=south east] (ziva) at (box.south east) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
+
+                    
    \coordinate (currenty) at ($(box.south)-(yshift)$);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,16 +157,17 @@
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrw) at ($(currenty) + (-34,0)$) {\includegraphics[width=8cm]{qrwebsite}};
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrgit) at ($(currenty) + (34,0)$) {\includegraphics[width=8cm]{QRvawiswow}};
     \node[anchor=south] (web) at (qrw.north) {\textbf{\color{colorone!80!black}{Website}}};
+    \node[anchor=north] (webadd) at ($(qrw.south)+(0,0.3)$) {\smallest{\color{colorone!80!black}{timotheenivalis.github.io}}};
     \node[anchor=south] (git) at (qrgit.north) {\textbf{\color{colorone!80!black}{R and \LaTeX code}}};
-		
+    \node[anchor=north] (gitadd) at ($(qrgit.south)+(0,0.3)$) {\smallest{\color{colorone!80!black}{github.com/timotheenivalis/VAWisWOW}}};
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
    \Endblock{($(web.east)+(2,-4)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
    Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
 C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
-Marcel E. Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
-Jane Reid, Matthew Wolack, Andrew Cockburn \\
+Marcel Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
+Jane Reid, Matthew Wolack \& Andrew Cockburn \\
 
 {\color{colorone}{\**} Fisher's theorem relies on stringent assumptions, or alternatively on quite a specific meaning of evolution: }
   }

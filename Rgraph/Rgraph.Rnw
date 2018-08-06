@@ -1,0 +1,96 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage[margin=2cm]{geometry}
+% math
+
+\usepackage{amsmath}
+
+%opening
+\title{Generate R graphes}
+\author{Timoth\'ee Bonnet}
+
+\begin{document}
+
+\maketitle
+
+Packages
+<<message=FALSE>>=
+library(MCMCglmm)
+library(mixtools)#for ellipse
+@
+
+
+
+\section{Illustrate fit of different models}
+
+<<>>=
+zidt <- read.table(file = "VAr0.01V0.01TL0.96Phi0.5/Captures1.txt", header = TRUE)
+@
+
+<<eval=FALSE>>=
+mg <- MCMCglmm(Rho ~ 1, data = zidt)
+mp <- MCMCglmm(Rho ~ 1, data = zidt, family = "poisson")
+pmzi <- MCMCglmm(Rho ~ -1 + trait, rcov=~us(trait):units, data = zidt, family = "zipoisson")
+tosave <- list(mg= list(Sol=mg$Sol, VCV=mg$VCV),
+               mp = list(Sol=mp$Sol, VCV=mp$VCV),
+               pmzi = list(Sol=pmzi$Sol, VCV=pmzi$VCV))
+save(tosave, file = "smallmodelsfordistri")
+@
+
+<<>>=
+load("smallmodelsfordistri")
+dg <- rnorm(n = nrow(zidt), mean = tosave$mg$Sol, sd = sqrt(tosave$mg$VCV))
+
+dp <- list()
+for(i in 1:1000)
+{
+  lambdai <- exp(tosave$mp$Sol[i]+rnorm(1, mean = 0, sd = sqrt(tosave$mp$VCV[i])))
+  dp[[i]] <- rpois(n = 100, lambda = lambdai)
+}
+dpc <- table(unlist(dp))
+dpc <- dpc/sum(dpc)
+dpc <- dpc[as.integer(names(dpc))<15]
+
+dpzi <- list()
+for(i in 1:1000)
+{
+  lambdai <- exp(tosave$pmzi$Sol[i, 1]+rnorm(1, mean = 0, sd = sqrt(tosave$pmzi$VCV[i, 1])))
+  probi <- plogis(-tosave$pmzi$Sol[i,2]-rnorm(1, 0, sd = sqrt(tosave$pmzi$VCV[i,4])))
+  dp[[i]] <- rpois(n = 100, lambda = lambdai) * rbinom(n = 100, size = 1, prob = probi)
+}
+
+dpczi <- table(unlist(dp))
+dpczi <- dpczi/sum(dpczi)
+
+drho <- table(zidt$Rho)
+drho <- drho/sum(drho)
+@
+
+<<zidist, dev='tikz'>>=
+barplot(rbind(drho, dpczi[1:14], dpc[1:14]), beside = TRUE, col = c("black", "purple", "orange"), las=1, ylab = "density", border = c("black", "purple", "orange"), xlab="Lifetime reproductive success")
+lines(y = density(dg)$y, x=density(dg)$x*4, col=rgb(1,0,0, 0.8), lwd=3)
+legend(x = "topright", legend = c("Observed data", "ZI Poisson prediction", "Poisson prediction", "Gaussian prediction"), fill = c("black", "purple", "orange", NA), lwd = c(NA, NA, NA, 3), lty = c(NA, NA, NA, 1), box.lwd = c(1,1,1,0), col = c("black", "purple", "orange", rgb(1,0,0, 0.8)),border = c(NA))
+@
+
+
+\section{Show G-matrix for latent ZI breeding values}
+
+<<latentGmat, dev='tikz'>>=
+mu <- c(log(2), 1/(1+exp(-0.7)))
+gmat <- matrix(c(2,1,1,3), nrow = 2)
+
+
+
+plot(xlab="Breeding value latent Poisson", ylab="Breeding value latent ZI", x=0,type = "n", xlim = c(-2, 4), ylim=c(-6,15), las=1)
+
+for(i in 800:1000)
+{
+  ellipse(mu = $Sol[i,1:2], sigma = matrix(univar_LBS_ZIfull_prior1BHS$VCV[i,1:4], nrow = 2), col=rgb(0,0,1,0.1), lwd=2)
+}
+
+@
+
+
+\end{document}
