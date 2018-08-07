@@ -85,18 +85,18 @@
 
 	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} We do not know how much wild organisms are currently evolving!}
 		{Fisher's fundamental theorem of natural selection states that \textbf{additive genetic variation in fitness measures evolution across all traits and all the genome}. That is just what we need{\color{colorone}{\**}}!
-		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. We assemble data from the monitoring of a dozen pedigreed populations, 
+		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. A dozen long-term monitored populations have high quality fitness and relatedness measurements. How to make the most of these data? Are birds and mammals currently evolving? How fast?
 		}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\blocknodew[($(currenty)+(0,2)$)]{77}{\textsc{Theory:} How to estimate additive genetic variance in relative fitness ($V_A(\omega)$) ?}
 	{	
-	\hspace{-1cm}
+	\hspace{-0.5cm}
 		\begin{tabular}{p{0.30\textwidth} p{0.029\textwidth} p{0.30\textwidth} p{0.029\textwidth} p{0.30\textwidth}}
 		
-		\parbox{24cm}{ \hspace{2cm} {\textsc{How to model fitness?}\\
+		\parbox{24cm}{\vspace{-0.3cm} \hspace{1cm} \textsc{Model distributions for fitness}\\
 		
-		  \centering  \begin{tabular}{c c}
+		 {\centering  \begin{tabular}{c}
 		    \includegraphics[width=20cm]{Rgraph/figure/zidist-1.pdf}
 		    \end{tabular}
 		    
@@ -106,7 +106,7 @@
 		&
 
 		&
-		\parbox{24cm}{ \hspace{1cm} \textsc{How to estimate genetic variation?}\\
+		\parbox{24cm}{ \hspace{1cm} \textsc{Estimate latent genetic variation}\\
 		
 		   {\centering \begin{tabular}{c} 
 		   \includegraphics[width=20cm]{Rgraph/figure/latentGmat-1.pdf}
@@ -118,16 +118,17 @@
 		&
 		  
 		&
-		\parbox{24cm}{\textsc{How to convert estimates to $V_A(\omega)$}\\
+		\parbox{24cm}{\textsc{Convert latent parameters to $V_A(\omega)$}\\
 		
 		{\centering \begin{tabular}{c}
 		  \includegraphics[width=20cm]{Rgraph/figure/DlambdaZI-1.pdf}
-		\end{tabular}} 
-				
+		\end{tabular}
+		
+		}		
 		\footnotesize Monte-Carlo integration of latent breeding values to the scale of data. Back-transformation works: with simulations $V_A(\omega)$ equals the increase in population growth rate.
 	      }
 		\end{tabular}
-		\vspace{-1cm}
+		\vspace{-0cm}
 	}%end block
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\coordinate (tfirstcol) at (currenty);
@@ -144,21 +145,37 @@
             \nodepart{second}
             \begin{minipage}{\x1}
             \begin{center}
-	      \vspace{22cm} % a very mesy trick to control box height...
+	      \vspace{34cm} % a very mesy trick to control box height...
             \end{center}
            \end{minipage}
           }; 
 
           %% the title of the block
           \node[frame, anchor=north west, text=blocktitletextcolor] at (box.north west)
-          {\bf\LARGE \textsc{Emperical results:} };
+          {\bf\LARGE \textsc{Emperical results:} Additive genetic variation in fitness detectable in most populations};
           
-          \node[anchor=north] (map) at ($(box.north)+(0,-3)$) {\includegraphics[width=20cm, trim=0cm 2.5cm 0cm 2.5cm, clip]{Rgraph/map.pdf}};
+          \newcommand{\matpicw}{5.9cm}
+          
+          %\node[anchor=north] (map) at ($(box.north)+(0,-5.3)$) {\includegraphics[height=13.2cm, trim=0cm 4.5cm 0cm 2.5cm, clip]{Rgraph/map.pdf}};
+	  \node[anchor=north west] (pictab) at ($(box.north west)+(-0.5,-3.3)$) {
+	  \setlength{\tabcolsep}{3pt}
 
+	  \begin{tabular}{c c c c c c c c c c c}
+	    \includegraphics[width=\matpicw]{bgs} & \includegraphics[width=\matpicw]{soay} &\includegraphics[width=\matpicw]{doe} & \includegraphics[width=\matpicw]{squirrel}&\includegraphics[width=\matpicw]{vole} & 
+	    \includegraphics[height=\matpicw, trim=0.5cm 4.5cm 0.5cm 2.5cm, clip]{Rgraph/map.pdf} &
+	    \includegraphics[width=\matpicw]{ssp} & \includegraphics[width=\matpicw]{cfc} &\includegraphics[width=\matpicw]{gt} & \includegraphics[width=\matpicw]{bt}&\includegraphics[width=\matpicw]{sfw} 
+	   \end{tabular}
+	  };
+          
           \node[anchor=south west] (zih2) at (box.south west) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
           %\node[anchor=north] (zih2com) at (zih2.south) {Heritabilities are small on the scale of the data\dots};
+          \node[anchor=south west] (commh2) at ($(box.south west)+(1,1)$) { \parbox{35cm}{
+          Heritabilities are small on the scale of the data (average 2.4\%), cohort effects, maternal effects and stochasticity dominate variation. However, credibility intervals of $V_A(\omega)$ exclude 0 in 5/10 populations, and the mode exceeds $0.1\%$ in all of them, suggesting widespread on-going evolution. 
+          These preliminary results suggest
+          }
+          };
           
-          \node[anchor=south east] (ziva) at (box.south east) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
+          \node[anchor=south east] (ziva) at (box.south east) {\includegraphics[width=20cm]{Rgraph/ziva.pdf}};
 	  %\node[anchor=north] (zivacom) at (ziva.south) {\dots but that is irrelevant to the rate of evolution.};
                     
    \coordinate (currenty) at ($(box.south)-(yshift)$);
@@ -169,14 +186,14 @@
 
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrw) at ($(currenty) + (-34,0)$) {\includegraphics[width=8cm]{qrwebsite}};
     \node[anchor=north, rounded corners=15pt, fill=titledrawcolor] (qrgit) at ($(currenty) + (34,0)$) {\includegraphics[width=8cm]{QRvawiswow}};
-    \node[anchor=south] (web) at (qrw.north) {\textbf{\color{colorone!80!black}{Website}}};
+    \node[anchor=center] (web) at ($(qrw.north)+(0,0.7)$) {\textbf{\color{colorone!80!black}{Website}}};
     \node[anchor=north] (webadd) at ($(qrw.south)+(0,0.3)$) {\smallest{\color{colorone!80!black}{timotheenivalis.github.io}}};
-    \node[anchor=south] (git) at (qrgit.north) {\textbf{\color{colorone!80!black}{R and \LaTeX code}}};
+    \node[anchor=center] (git) at ($(qrgit.north)+(0,0.7)$) {\textbf{\color{colorone!80!black}{R and \LaTeX code}}};
     \node[anchor=north] (gitadd) at ($(qrgit.south)+(0,0.3)$) {\smallest{\color{colorone!80!black}{github.com/timotheenivalis/VAWisWOW}}};
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
-   \Endblock{($(web.east)+(2,-4.5)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
+   \Endblock{($(web.east)+(2,-4.7)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
    Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
 C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
 Marcel Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,

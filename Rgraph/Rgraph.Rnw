@@ -111,13 +111,13 @@ boxplot(lapply(reslistzi$`0.1`$`0`, FUN = function(x){x$MeanPopGrowth}),
         at = 3*(1:4), names = NA, xlim=c(2.4,14.6), xaxt="n", yaxt="n", col = colcenter[1], 
         border = colborder[1], main="", ylim=c(-0.12,.15))
 boxplot(lapply(reslistzi$`0.5`$`0`, FUN = function(x){x$MeanPopGrowth}),
-        add = TRUE, col=colcenter[2], at = 1+3*(1:4), border = colborder[2], names = varval )
+        add = TRUE, col=colcenter[2], at = 1+3*(1:4), border = colborder, names = varval )
 boxplot(lapply(reslistzi$`0.9`$`0`, FUN = function(x){x$MeanPopGrowth}), 
-        add = TRUE, col=colcenter[3], at = 2+3*(1:4) ,names=NA, yaxt="n", xaxt="n",
-        xlab="\\textbf{Simulated $V_A(\\omega)}$", ylab="\\textbf{Change in population growth rate}", border=colborder[3])
+        add = TRUE, border = colborder, col=colcenter[3], at = 2+3*(1:4) ,names=NA, yaxt="n", xaxt="n",
+        xlab="\\textbf{Simulated} $V_A(\\omega)$ \\textbf{after back-transformation}", ylab="\\textbf{Change in population growth rate}")
 abline(v = 3*(0:5)+2.5, col="gray")
 legend(x = "bottomright", legend = c(0.1, 0.5, 0.9), fill = colcenter, title = "Zero-Inflation", 
-       border = colcenter, bg = NA, box.lwd = NA)
+       border = colborder, bg = "white", box.lwd = NA)
 arrows(x0 = (3*(0:3)+2.5), x1 = (3*(1:4)+2.5), y0 = varval, code = 0, col="gray", lwd=3)
 @
 
