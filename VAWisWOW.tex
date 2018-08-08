@@ -40,6 +40,7 @@
 \renewcommand{\Large}{\fontsize{42}{40}\selectfont} % Authors
 \renewcommand{\normalsize}{\fontsize{40}{42}\selectfont} % Text in the boxes
 \renewcommand{\footnotesize}{\fontsize{34}{42}\selectfont} % references
+\newcommand{\footnotesizeminus}{\fontsize{31}{38}\selectfont} % references
 \renewcommand{\small}{\fontsize{24}{22}\selectfont}
 \newcommand{\smallest}{\fontsize{18}{16}\selectfont}
 %% add your packages here
@@ -50,7 +51,7 @@
 
 
 \title{How much are wild vertebrate populations evolving right now?\vspace{-0.2em}}
-\author{{\LARGE{Timoth\'{e}e Bonnet} \& Loeske Kruuk}\\ \vspace{-20pt} \footnotesize Australian National University
+\author{{\LARGE{Timoth\'{e}e Bonnet}, Michael Morrissey \& Loeske Kruuk}\\ \vspace{-20pt} \footnotesize Australian National University \& University of St Andrews
 \\
 }
 
@@ -85,7 +86,7 @@
 
 	\blocknodew[($(currenty)+(19.6,0)$)]{77}{\textsc{The big problem:} We do not know how much wild organisms are currently evolving!}
 		{Fisher's fundamental theorem of natural selection states that \textbf{additive genetic variation in fitness measures evolution across all traits and all the genome}. That is just what we need{\color{colorone}{\**}}!
-		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. A dozen long-term monitored populations have high quality fitness and relatedness measurements. How to make the most of these data? Are birds and mammals currently evolving? How fast?
+		Yet, there are few estimates in free-ranging populations, and most may be unreliable. Indeed, it is difficult to measure fitness, difficult to estimate genetic variance, statistical models tend not to fit the data, and it is unclear how to interpret estimates from generalized linear models. We use a dozen long-term monitored populations with high quality fitness (measured as lifetime breeding success) and relatedness measurements to tackle these issues. How to make the most of these data? Are birds and mammals currently evolving? 
 		}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -125,7 +126,7 @@
 		\end{tabular}
 		
 		}		
-		\footnotesize Monte-Carlo integration of latent breeding values to the scale of data. Back-transformation works: with simulations $V_A(\omega)$ equals the increase in population growth rate.
+		\footnotesize Monte-Carlo integration of latent breeding values to the data scale. Back-transformation works for individual-based simulations: $V_A(\omega)$ equals the increase in population growth rate.
 	      }
 		\end{tabular}
 		\vspace{-0cm}
@@ -156,26 +157,36 @@
           
           \newcommand{\matpicw}{5.9cm}
           
-          %\node[anchor=north] (map) at ($(box.north)+(0,-5.3)$) {\includegraphics[height=13.2cm, trim=0cm 4.5cm 0cm 2.5cm, clip]{Rgraph/map.pdf}};
-	  \node[anchor=north west] (pictab) at ($(box.north west)+(-0.5,-3.3)$) {
-	  \setlength{\tabcolsep}{3pt}
+          \node[anchor=north west] (map) at ($(box.north)+(0,-2.8)$) {\includegraphics[height=13.2cm, trim=0cm 4.5cm 0cm 2.5cm, clip]{Rgraph/map.pdf}};
+	  \node[anchor=north west] (pictab) at ($(box.north west)+(0,-3.3)$) {
+	  \setlength{\tabcolsep}{12pt}
 
 	  \begin{tabular}{c c c c c c c c c c c}
-	    \includegraphics[width=\matpicw]{bgs} & \includegraphics[width=\matpicw]{soay} &\includegraphics[width=\matpicw]{doe} & \includegraphics[width=\matpicw]{squirrel}&\includegraphics[width=\matpicw]{vole} & 
-	    \includegraphics[height=\matpicw, trim=0.5cm 4.5cm 0.5cm 2.5cm, clip]{Rgraph/map.pdf} &
-	    \includegraphics[width=\matpicw]{ssp} & \includegraphics[width=\matpicw]{cfc} &\includegraphics[width=\matpicw]{gt} & \includegraphics[width=\matpicw]{bt}&\includegraphics[width=\matpicw]{sfw} 
+	    \includegraphics[width=\matpicw]{bhs} & \includegraphics[width=\matpicw]{soay} &\includegraphics[width=\matpicw]{doe} & \includegraphics[width=\matpicw]{squirrel}&\includegraphics[width=\matpicw]{vole} \\ 
+	   % \includegraphics[height=\matpicw, trim=0.5cm 4.5cm 0.5cm 2.5cm, clip]{Rgraph/map.pdf} &
+	    \includegraphics[width=\matpicw]{ssp} & \includegraphics[width=\matpicw]{gt2} &\includegraphics[width=\matpicw]{gt} & \includegraphics[width=\matpicw]{bt}&\includegraphics[width=\matpicw]{sfw} 
 	   \end{tabular}
 	  };
           
-          \node[anchor=south west] (zih2) at (box.south west) {\includegraphics[width=20cm]{Rgraph/zih2.pdf}};
+          \node[anchor=south west] (zih2) at (box.south west) {\includegraphics[width=24cm]{Rgraph/zih2.pdf}};
           %\node[anchor=north] (zih2com) at (zih2.south) {Heritabilities are small on the scale of the data\dots};
-          \node[anchor=south west] (commh2) at ($(box.south west)+(1,1)$) { \parbox{35cm}{
-          Heritabilities are small on the scale of the data (average 2.4\%), cohort effects, maternal effects and stochasticity dominate variation. However, credibility intervals of $V_A(\omega)$ exclude 0 in 5/10 populations, and the mode exceeds $0.1\%$ in all of them, suggesting widespread on-going evolution. 
-          These preliminary results suggest
+          \node[anchor=south west] (commh2) at ($(zih2.north west)+(1,-0.7)$) { \parbox{74cm}{
+          Preliminary models suggest small heritabilities of fitness on the data-scale (average 2.4\%). Cohort effects, maternal effects and stochasticity dominate variation. However, credibility intervals of $V_A(\omega)$ exclude 0 in 5 out of 10 populations, and the posterior mode exceeds $0.1\%$ in all of them, suggesting widespread on-going evolution. 
           }
           };
           
-          \node[anchor=south east] (ziva) at (box.south east) {\includegraphics[width=20cm]{Rgraph/ziva.pdf}};
+          \node[anchor=west] (ziva) at (zih2.east) {\includegraphics[width=24cm]{Rgraph/ziva.pdf}};
+          \node[anchor=west] (com) at ($(ziva.east)+(-0.5,0)$) { \parbox{25.5cm}{\textsc{Next, we will explore:}
+          \begin{itemize}
+           \item Influence of priors on estimation
+           \item Influence of missing data and imigration
+           \item Sex-specific fitness. Does cross-sex genetic correlation constrain or enhance evolution?
+           \item Relative importance of ZI, Poisson and their covariance
+           \item Significance for population dynamics
+          \end{itemize}
+
+          }
+          };
 	  %\node[anchor=north] (zivacom) at (ziva.south) {\dots but that is irrelevant to the rate of evolution.};
                     
    \coordinate (currenty) at ($(box.south)-(yshift)$);
@@ -194,10 +205,10 @@
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
    \Endblock{($(web.east)+(2,-4.7)$)}{57}{\hspace{25cm}\color{colorone}{\textsc{Co-authors:}}}{ 
-   Michael Morrissey, Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, Andrew McAdam, Stan Boutin, Anne Charmantier,
+   {\footnotesizeminus Josephine Pemberton, Tim Clutton-Brock, Marco Festa-Bianchet, David Coltman, Fanie Pelletier, Andrew McAdam, Stan Boutin, Anne Charmantier,
 C\'eline Teplistky, Christophe de Franceschi, Erik Postma, Glauco Camenisch,
 Marcel Visser, Ben Sheldon, Simon Evans, Lars Gustafsson,
-Jane Reid, Matthew Wolack \& Andrew Cockburn \\
+Jane Reid, Matthew Wolack, Peter Arcese \& Andrew Cockburn} \\
 
 {\color{colorone}{\**} Fisher's theorem relies on stringent assumptions, or alternatively on a specific meaning of evolution. In the absence of competition and gene-by-environment interactions, $V_A(\omega)$ is the increase in expected population growth rate. This clean link between evolution and demography probably doesn't apply (for long) in nature.}
   }
