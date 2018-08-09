@@ -129,49 +129,73 @@ arrows(x0 = (3*(0:3)+2.5), x1 = (3*(1:4)+2.5), y0 = varval, code = 0, col="gray"
 par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
 xp <- rnorm(n = 10000, mean = 2, sd = 0.5)
 plot(density(xp, adjust = 2), xlab="", ylab="", main="", col=rgb(22, 194, 22, maxColorValue = 255))
-mtext(text = "Latent Poisson", side = 1, line = 2.0, cex = 1.5)
-mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
+#mtext(text = "Latent Poisson", side = 1, line = 2.0, cex = 1.5)
+#mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
+@
+
+<<VAPoisson2, dev='tikz', fig.width=4, fig.height=2>>=
+par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
+xp2 <- rnorm(n = 10000, mean = 0, sd = 1)
+plot(density(xp2, adjust = 2), xlab="", ylab="", main="", col=rgb(22, 194, 22, maxColorValue = 255))
+#mtext(text = "Latent Poisson", side = 1, line = 2.0, cex = 1.5)
+#mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
 @
 
 <<VAZI, dev='tikz', fig.width=4, fig.height=2>>=
 par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
 xzi <- rnorm(n = 10000, mean = 1, sd = 1)
 plot(density(xzi, adjust = 2), xlab="", ylab="", main="", col=rgb(11, 97, 11, maxColorValue = 255))
-mtext(text = "Latent ZI", side = 1, line = 2, cex = 1.5)
-mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
+#mtext(text = "Latent ZI", side = 1, line = 2, cex = 1.5)
+#mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
 @
+
+<<VAZI2, dev='tikz', fig.width=4, fig.height=2>>=
+par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
+xzi2 <- rnorm(n = 10000, mean = 0, sd = 1)
+plot(density(xzi2, adjust = 2), xlab="", ylab="", main="", col=rgb(11, 97, 11, maxColorValue = 255))
+#mtext(text = "Latent ZI", side = 1, line = 2, cex = 1.5)
+#mtext(text = "breeding values", side = 1, line = 3, cex = 1.5)
+@
+
 
 <<VAPoissondata, dev='tikz', fig.width=4, fig.height=2>>=
 par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
 pxp <- exp(xp)
 plot(density(pxp, adjust = 2, from=0), xlim=c(0, 30), xlab="", ylab="", main="", col=rgb(22, 194, 22, maxColorValue = 255))
-mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
-mtext(text = "Poisson breeding values", side = 1, line = 3, cex = 1.5)
+#mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
+#mtext(text = "Poisson breeding values", side = 1, line = 3, cex = 1.5)
 @
 
 <<VAZIdata, dev='tikz', fig.width=4, fig.height=2>>=
 par(las=1, cex.lab=1.3, cex=1.5, mar=c(4,4,0,3)+0.1, lwd=5, yaxt="n")
 pxzi <- 1/(1+exp(-xzi))
 plot(density(pxzi, adjust = 2, from = 0, to =1), xlab="", ylab="", main="",col=rgb(11, 97, 11, maxColorValue = 255))
-mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
-mtext(text = "ZI breeding values", side = 1, line = 3, cex = 1.5)
+#mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
+#mtext(text = "ZI breeding values", side = 1, line = 3, cex = 1.5)
 @
 
 <<VAdata,  dev='tikz', fig.width=4, fig.height=2>>=
 par(las=1, cex.lab=1.3, cex=1.5, mar=c(5,4,0,3)+0.1, lwd=5, yaxt="n")
 px <- pxp * pxzi
 plot(density(px, adjust = 2, from = 0, to =15), xlab="", ylab="", main="", col=rgb(11, 97, 11, maxColorValue = 255))
-mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
-mtext(text = "total breeding values", side = 1, line = 3, cex = 1.5)
+#mtext(text = "Expected data-scale", side = 1, line = 2, cex = 1.5)
+#mtext(text = "total breeding values", side = 1, line = 3, cex = 1.5)
 @
 
 <<data,  dev='tikz', fig.width=4, fig.height=2.5>>=
-par(las=1, cex.lab=1.3, cex=1.5, mar=c(5,4,0,3)+0.1)
+par(las=1, cex.lab=1.3, cex=1.5, mar=c(5,4,0,3)+0.1, yaxt="n")
 dpx <- sapply(X = pxp, FUN = function(x){rpois(1,x)}) * sapply(X=pxzi, FUN=function(x){rbinom(1,1,x)})
 tdpx <- table(dpx)
 tdpx <- tdpx /sum(tdpx)
-barplot(axes = TRUE, tdpx[1:15], xlab="", ylab="density", main="", col =rgb(0,0,0,maxColorValue = 255), border = NA)
-mtext(text = "Observed data", side = 1, line = 2.2, cex = 1.5)
+barplot( tdpx[1:15], xlab="", ylab="", main="", col =rgb(0,0,0,maxColorValue = 255), border = NA)
+#mtext(text = "Observed data", side = 1, line = 2.2, cex = 1.5)
+@
+
+<<>>=
+nbs <- 100
+roundnb <- 3
+distrib <- data.frame(pxpx = round(density(pxp, n = nbs)$x,roundnb), pxpy = round(density(pxp, n = nbs)$y, roundnb) , pxzix = round(density(pxzi, n = nbs)$x, roundnb), pxziy = round(density(pxzi, n = nbs)$y, roundnb))
+write.csv(x = distrib, file = "distrib.csv", row.names = FALSE, quote = FALSE)
 @
 
 \end{document}

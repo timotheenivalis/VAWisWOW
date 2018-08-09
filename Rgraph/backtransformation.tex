@@ -1,0 +1,93 @@
+\documentclass{article}
+
+%\usepackage[paperwidth=11.5cm,paperheight=9.8cm, margin=0cm]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc}
+\tikzset{>=stealth}%\tikzset{>=latex}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+
+\definecolor{green1}{RGB}{11,97,11}
+\definecolor{green2}{RGB}{22,194,22}
+
+\begin{document}
+\centering
+
+    \begin{tikzpicture}
+    
+    \node (vazi) at (0,0) {\includegraphics[width=5cm]{figure/VAZI-1.pdf}};
+    \node[anchor=west] (vap) at ($(vazi.east) +(0,0)$) {\includegraphics[width=5cm]{figure/VAPoisson-1.pdf}};
+    \node[anchor=north] (vazid) at ($(vazi.south) +(0,0)$) {\includegraphics[width=5cm]{figure/VAZIdata-1.pdf}};
+    \node[anchor=north] (vapd) at ($(vap.south) +(0,0)$) {\includegraphics[width=5cm]{figure/VAPoissondata-1.pdf}};
+    \node[anchor=north east] (data) at ($(vapd.south) +(0,0)$) {\includegraphics[width=5cm]{figure/data-1.pdf}};
+    
+    \draw[->, color=green1] ($(vazi)+(-1,0.05)$) -- ($(vazid)+(-1,0.1)$);
+    \draw[->, color=green1] ($(vazi)+(-0.2,0.5)$) -- ($(vazid)+(0.2,0.6)$);
+    \draw[->, color=green1] ($(vazi.north)+(0.22,-0.31)$) -- ($(vazid.north)+(0.88,-0.23)$);
+    
+    \draw[->, color=green1, dashed] ($(vazid.north)+(0.88,-0.23)$) -- ($(data.west)+(1.48, 1.5)$);
+    \draw[->, color=green1, dashed] ($(vazid.north)+(0.88,-0.23)$) -- ($(data.west)+(2.5, 0.4)$);
+    
+    \draw[->, color=green2] ($(vap.north)+(0.23,-0.31)$) -- ($(vapd.north)+(-0.5,-0.25)$);
+    \draw[->, color=green2] ($(vap)+(0.6,0.3)$) -- ($(vapd)+(0.4,0.25)$);
+    \draw[->, color=green2] ($(vap)+(-1,0.1)$) -- ($(vapd)+(-1.1,0.15)$);
+    
+    
+    \draw[->, color=green2, dashed] ($(vapd)+(0.35,0.15)$) -- ($(data.west)+(2.7, 0.4)$);
+    \draw[->, color=green2, dashed] ($(vapd)+(0.35,0.15)$) -- ($(data.west)+(3.7, 0.2)$);
+
+    \end{tikzpicture}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}
+\begin{axis}[
+width=4cm,
+height=3cm,
+at={(5cm,0cm)},
+ axis x line=bottom,
+axis y line=left,
+ytick=\empty
+]
+ \addplot[green2, very thick, mark=none] table[x=pxpx, y=pxpy, col sep=comma] {distrib.csv};
+ \node[coordinate] (base1) at (axis cs:0,0) {};
+\end{axis}
+
+%%%%%%%%%%%
+\begin{axis}[
+width=4cm,
+height=3cm,
+at={(0cm,0cm)}
+]
+ \addplot[ green1, very thick, mark=none] table[x=pxpx, y=pxpy, col sep=comma] {distrib.csv};
+
+ \node[coordinate] (base2) at (axis cs:0,0) {};
+
+\end{axis}
+
+\begin{axis}[
+width=4cm,
+height=3cm,
+at={(5cm,-5cm)}
+]
+ \addplot[smooth, green2] table[x=pxpx, y=pxpy, col sep=comma] {distrib.csv};
+ \node[coordinate] (base3) at (axis cs:0,0) {};
+\end{axis}
+
+%%%%%%%%%%%
+\begin{axis}[
+width=4cm,
+height=3cm,
+at={(0cm,-5cm)}
+]
+ \addplot[smooth, green1] table[x=pxzix, y=pxziy, col sep=comma] {distrib.csv};
+ \node[coordinate] (base4) at (axis cs:0,0) {};
+\end{axis}
+
+ \draw[color=red] (base2) -- (base1);
+
+    \end{tikzpicture}
+
+\end{document}
