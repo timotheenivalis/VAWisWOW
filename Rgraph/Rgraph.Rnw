@@ -192,9 +192,9 @@ barplot( tdpx[1:15], xlab="", ylab="", main="", col =rgb(0,0,0,maxColorValue = 2
 @
 
 <<>>=
-nbs <- 100
+nbs <- 200
 roundnb <- 3
-distrib <- data.frame(pxpx = round(density(pxp, n = nbs)$x,roundnb), pxpy = round(density(pxp, n = nbs)$y, roundnb) , pxzix = round(density(pxzi, n = nbs)$x, roundnb), pxziy = round(density(pxzi, n = nbs)$y, roundnb))
+distrib <- data.frame(pxpx = round(density(pxp, n = nbs, bw = 2)$x,roundnb), pxpy = round(density(pxp, n = nbs, bw = 2)$y, roundnb) , pxzix = round(density(pxzi, n = nbs, bw = 2)$x, roundnb), pxziy = round(density(pxzi, n = nbs, bw = 2)$y, roundnb))
 write.csv(x = distrib, file = "distrib.csv", row.names = FALSE, quote = FALSE)
 @
 

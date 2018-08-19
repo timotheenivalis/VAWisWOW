@@ -49,9 +49,11 @@ height=3cm,
 at={(5cm,0cm)},
  axis x line=bottom,
 axis y line=left,
-ytick=\empty
+ytick=\empty,
+x tick label style={rotate=0,anchor=north},
+restrict x to domain*=0:23
 ]
- \addplot[green2, very thick, mark=none] table[x=pxpx, y=pxpy, col sep=comma] {distrib.csv};
+ \addplot[green2, very thick, smooth] table[x=pxpx, y=pxpy, col sep=comma] {distrib.csv};
  \node[coordinate] (base1) at (axis cs:0,0) {};
 \end{axis}
 
