@@ -1,4 +1,4 @@
-** VAWisWOW **
+# VAWisWOW
 This is the poster I present at Evolution 2018, Montpellier.
 The poster itself is the file VAWisWOW.pdf and was created by pdfLaTeX applied on the file VAWisWOW.tex with the very ad-hoc and messy style file fancytikzposterM.sty and a few other dependencies. 
 
